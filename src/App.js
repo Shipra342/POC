@@ -2,12 +2,12 @@ import React, { useState, useEffect } from "react";
 import './App.css';
 import { v4 as uuid } from "uuid";
 import "./App.css";
-// import Routing from './Components/Routing';
-// import { BrowserRouter } from "react-router-dom";
+
 import ToDoList from "./Components/ToDoList";
 import AddList from "./Components/AddList";
 import Landing from "./Components/Landing"
-// import Modal from "@mui/material/Modal/Modal";
+
+
 
 function App() {
 
@@ -37,14 +37,13 @@ function App() {
       return value;
     })
 
-    // console.log(list)
+    console.log(list)
 
     localStorage.setItem('todolists', JSON.stringify(list));
   };
 
   useEffect(() => {
     localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(todolists));
-    console.log(todolists)
   });
 
   const removeListHandler = (id) => {

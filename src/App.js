@@ -37,7 +37,6 @@ function App() {
       return value;
     })
 
-    console.log(list)
 
     localStorage.setItem('todolists', JSON.stringify(list));
   };

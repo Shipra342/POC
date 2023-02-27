@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 
 const Todocard = (props) => {
-    const { id, title, content, color } = props.todolist;
+    const { title, content, color } = props.todolist;
 
     const [isDisabled, setIsDisabled] = useState(false);
 
@@ -19,7 +19,7 @@ const Todocard = (props) => {
     }
 
     return (
-        <div className="item" style={{backgroundColor: color}}>
+        <div className="item" style={{ backgroundColor: color }}>
             <div className="content">
                 <input type="date" defaultValue={title || ""} style={{ border: 'none', background: 'transparent', width: '100%', backgroundColor: isDisabled ? "#F8F0E3" : color }}
                     onChange={e => (props.todolist.title = e.target.value)} disabled={!isDisabled} /><br />
@@ -33,9 +33,11 @@ const Todocard = (props) => {
 
             </div>
             <div className="icons">
-                <i onClick={handleClick}>
-                    <CreateIcon />
-                </i>
+                <button data-testid="edit" onClick={handleClick} style={{background: 'transparent', border: 'none'}}>
+                    <i>
+                        <CreateIcon />
+                    </i>
+                </button>
                 <i
                     className="trash alternate outline icon"
                     style={{ color: "red" }}

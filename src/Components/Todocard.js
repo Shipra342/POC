@@ -5,7 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import CheckIcon from '@mui/icons-material/Check';
 
 const Todocard = (props) => {
-    const { title, content, color } = props.todolist;
+    const { id, title, content, color } = props.todolist;
 
     const [isDisabled, setIsDisabled] = useState(false);
 
@@ -33,7 +33,7 @@ const Todocard = (props) => {
 
             </div>
             <div className="icons">
-                <button data-testid="edit" onClick={handleClick} style={{background: 'transparent', border: 'none'}}>
+                <button onClick={handleClick} style={{background: 'transparent', border: 'none'}}>
                     <i>
                         <CreateIcon />
                     </i>

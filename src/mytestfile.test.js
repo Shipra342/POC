@@ -1,14 +1,14 @@
 import { render, fireEvent, screen } from "@testing-library/react";
-import Todocard from './Components/Todocard';
-import updateList from './Components/Todocard';
 import React from "react";
+import Landing from "./Components/Landing";
 
-test("edit todo", () => {
-        const updateList = jest.fn();
-        render(<Todocard />);
-    
-        const button = screen.findByTestId('button');
-        fireEvent.click(edit);
+test("open todo", () => {
 
-        expect(updateList).toHaveBeenCalled();
+        render(<Landing />);
+        const count = screen.getByTestId("count");
+
+        fireEvent.click(count);
+
+        expect(count).toHaveTextContent("1");
+
 });

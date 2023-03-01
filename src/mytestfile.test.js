@@ -1,14 +1,14 @@
 import { render, fireEvent, screen } from "@testing-library/react";
 import React from "react";
-import Landing from "./Components/Landing";
+import App from "./App";
+
 
 test("open todo", () => {
+  render(<App />);
 
-        render(<Landing />);
-        const count = screen.getByTestId("count");
+  const countTodo = screen.getByTestId("countTodo");
 
-        fireEvent.click(count);
-
-        expect(count).toHaveTextContent("1");
+  fireEvent.click(countTodo);
+  expect(countTodo).toHaveTextContent("1");
 
 });

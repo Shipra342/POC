@@ -1,21 +1,19 @@
 import React, { useState, useEffect } from "react";
-import './App.css';
-import { v4 as uuid } from "uuid";
 import "./App.css";
-
+import { v4 as uuid } from "uuid";
 import ToDoList from "./Components/ToDoList";
 import AddList from "./Components/AddList";
-import Landing from "./Components/Landing"
-
-
+import Landing from "./Components/Landing";
 
 function App() {
-
   const LOCAL_STORAGE_KEY = "todolists";
   const [todolists, setTodolists] = useState(
-    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY)) : []
+    JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+      ? JSON.parse(localStorage.getItem(LOCAL_STORAGE_KEY))
+      : []
   );
 
+  const [counter, setCounter] = useState(0);
 
   const addListHandler = (todolist) => {
     // console.log(todolist);
@@ -23,22 +21,20 @@ function App() {
   };
 
   const editList = (newList) => {
-
-    let list = JSON.parse(localStorage.getItem('todolists'));
+    let list = JSON.parse(localStorage.getItem("todolists"));
 
     list = list.map((value) => {
       if (value.id === newList.id) {
         return {
           ...value,
           title: newList.title,
-          content: newList.content
-        }
+          content: newList.content,
+        };
       }
       return value;
-    })
+    });
 
-
-    localStorage.setItem('todolists', JSON.stringify(list));
+    localStorage.setItem("todolists", JSON.stringify(list));
   };
 
   useEffect(() => {
@@ -52,20 +48,33 @@ function App() {
 
     setTodolists(newTodoList);
   };
-console.log()
+
+  const countList = () => {
+    setCounter(counter +1);
+  };
+
+  console.log();
   return (
     <div>
-      {todolists.length > 0 ?
+      <button onClick={countList} data-testid="countTodo">
+        {counter}
+      </button>
+      {todolists.length > 0 ? (
         <div>
           <Landing />
           <AddList addListHandler={addListHandler} />
-          <ToDoList todolists={todolists} getListId={removeListHandler} editList={editList}/>
-        </div> :
+          <ToDoList
+            todolists={todolists}
+            getListId={removeListHandler}
+            editList={editList}
+          />
+        </div>
+      ) : (
         <div>
           <Landing />
           <AddList addListHandler={addListHandler} />
         </div>
-      }
+      )}
     </div>
   );
 }

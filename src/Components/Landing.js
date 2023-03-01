@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 
 const Landing = (props) => {
 
-    const [counter, setCounter] = useState(0);
 
     const container = {
         margin: '0',
@@ -21,15 +20,11 @@ const Landing = (props) => {
         position: 'absolute',
     }
 
-    const count = () => {
-        setCounter(1);
-    }
     return (
 
         <div className="container" style={container}>
             <div >
                 <img src={require('../images/ToDoList.jpg')} style={subContainer} />
-                <button data-testid="count" onClick={count} style={{ position: 'absolute', top: '90%', left: '50%' }}>{counter}</button>
             </div>
             {/* <button className="buttonRed" style={button} onClick={() => props.navigate('/addlist')}>
                 Create a new Todo List

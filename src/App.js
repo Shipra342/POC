@@ -16,7 +16,6 @@ function App() {
   const [counter, setCounter] = useState(0);
 
   const addListHandler = (todolist) => {
-    // console.log(todolist);
     setTodolists([...todolists, { id: uuid(), ...todolist }]);
   };
 

@@ -2,7 +2,6 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import React from "react";
 import App from "./App";
 
-
 test("open todo", () => {
   render(<App />);
 
@@ -10,5 +9,6 @@ test("open todo", () => {
 
   fireEvent.click(countTodo);
   expect(countTodo).toHaveTextContent("1");
+
 
 });
